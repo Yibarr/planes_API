@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.get('/',(request,response)=>{
     response.send({message:'Server on'})
