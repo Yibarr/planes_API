@@ -68,6 +68,18 @@ app.patch('/asignar/vuelo/:vueloId/avion/:avionId',(req,res)=>{
     .then(avion => res.status(200).send({message:'Se ha asignado un nuevo vuelo',avion:avion}))
     .catch(error => res.status(409).send(error))
 });
+
+
+app.delete('/delete/avion/:id',(req,res)=>{
+    const { id } = req.params
+
+    Avion.findByIdAndDelete(id)
+    .exec()
+    .then(avion => res.status(200).send({message:'Se ha borrado el avión exitosamente',avion:avion}))
+    .catch(error => res.status(409).send(error))
+});
+
+
 //------------------------------------------------------
 app.post('/create/vuelo',(req,res)=>{
     const {
